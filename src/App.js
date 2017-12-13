@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import logo from './logo.svg';
-import './App.css';
+import Landing from './components/pages/Landing';
 
 const App = ({ location }) => (
   <div className="ui container">
