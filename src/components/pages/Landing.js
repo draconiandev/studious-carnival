@@ -5,7 +5,7 @@ const Landing = () => (
   <div>
     <h1>Landing Page</h1>
     <div>
-      <Link to="/register">Register</Link>
+      <Link to="/take-the-challenge">Enter competition</Link>
     </div>
   </div>
 );
