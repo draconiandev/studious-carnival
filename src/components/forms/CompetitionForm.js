@@ -88,13 +88,13 @@ class CompetitionForm extends React.Component {
     const splitDescription = description.split(" ");
 
     for (let word of splitTitle) {
-      if (mySeoMatcher().includes(word)) {
+      if (mySeoMatcher().includes(word.toLowerCase())) {
         titleScore += 10;
       }
     }
 
     for (let word of splitDescription) {
-      if (mySeoMatcher().includes(word)) {
+      if (mySeoMatcher().includes(word.toLowerCase())) {
         descriptionScore += 5;
       }
     }
@@ -163,7 +163,7 @@ class CompetitionForm extends React.Component {
                 type="text"
                 id="title"
                 name="title"
-                placeholder="My awesome title"
+                placeholder="My awesome title. Ex: Real Estate, Apartments, Mortgages & Home Values"
                 value={data.title}
                 onChange={this.onChange}
               />

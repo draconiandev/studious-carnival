@@ -1,6 +1,7 @@
 import React from "react";
 
 import CompetitionForm from "../forms/CompetitionForm";
+import ProblemStatement from "./ProblemStatement";
 
 class Landing extends React.Component {
   render() {
@@ -17,6 +18,8 @@ class Landing extends React.Component {
             a bang! Help them come up with a title, description and the keywords
             that you think will bring their search results to the top.
           </p>
+          <ProblemStatement />
+          <div className="ui hidden divider" />
           <CompetitionForm />
         </div>
       </div>
