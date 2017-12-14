@@ -2,33 +2,33 @@ import React from "react";
 
 class ResultPage extends React.Component {
   constructor(props) {
-    console.log(props);
     super();
     let grade;
-    if (props.val.descriptionScore >= 50) {
+    if (props.val.descriptionScore >= 50 || props.val.titleScore >= 50) {
       grade = "A";
-    } else if (props.val.descriptionScore >= 25) {
+    } else if (props.val.descriptionScore >= 25 || props.val.titleScore >= 25) {
       grade = "B";
     } else {
       grade = "C";
     }
     this.state = {
+      grade: grade,
       descriptionScore: props.val.descriptionScore,
-      titleScore: props.val.titleScore,
-      grade: grade
+      titleScore: props.val.titleScore
     };
   }
 
   render() {
-    if (this.state.descriptionScore) {
-      return (
-        <div>
-          <h2>
-            Congrats! You have successfully earned {this.state.grade} grade
-          </h2>
-        </div>
-      );
-    }
+    return (
+      <div>
+        <h2>Congrats! You have successfully earned {this.state.grade} grade</h2>
+
+        <ul>
+          <li>You earned {this.state.titleScore} for your title</li>
+          <li>You earned {this.state.descriptionScore} for your description</li>
+        </ul>
+      </div>
+    );
   }
 }
 

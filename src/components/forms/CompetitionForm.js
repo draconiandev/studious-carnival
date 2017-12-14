@@ -29,7 +29,6 @@ class CompetitionForm extends React.Component {
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });
       const val = this.calculate(this.state.data);
-      console.log(val);
       this.setState({ val: val, loading: false, shouldRedirect: true });
     }
   };
@@ -41,42 +40,52 @@ class CompetitionForm extends React.Component {
     let titleScore = 0;
     let descriptionScore = 0;
 
-    if (55 <= title.length <= 65) {
+    if (title.length <= 65 && title.length >= 55) {
       titleScore += 10;
     }
 
-    if (45 < title.length < 55 || 65 < title.length < 75) {
+    if (
+      (title.length < 55 && title.length > 45) ||
+      (title.length < 75 && title.length > 65)
+    ) {
       titleScore += 7;
     }
 
-    if (35 < title.length < 45 || 75 < title.length < 85) {
+    if (
+      (title.length < 45 && title.length > 35) ||
+      (title.length < 85 && title.length > 75)
+    ) {
       titleScore += 3;
     }
 
-    if (0 < title.length < 35 || 85 < title.length < 10000) {
+    if (title.length < 35 || title.length > 85) {
       titleScore += 0;
     }
 
-    if (135 <= description.length <= 150) {
+    if (description.length <= 165 && description.length >= 135) {
       descriptionScore += 10;
     }
 
-    if (100 < description.length < 135 || 150 < description.length < 185) {
+    if (
+      (description.length < 135 && description.length > 100) ||
+      (description.length < 200 && description.length > 165)
+    ) {
       descriptionScore += 7;
     }
 
-    if (75 < description.length < 100 || 185 < description.length < 210) {
+    if (
+      (description.length < 100 && description.length > 50) ||
+      (description.length < 250 && description.length > 200)
+    ) {
       descriptionScore += 3;
     }
 
-    if (0 < description.length < 75 || 210 < description.length < 10000) {
+    if (description.length < 50 || description.length > 250) {
       descriptionScore += 0;
     }
 
-    console.log(mySeoMatcher());
-
-    const splitTitle = title.split("");
-    const splitDescription = description.split("");
+    const splitTitle = title.split(" ");
+    const splitDescription = description.split(" ");
 
     for (let word of splitTitle) {
       if (mySeoMatcher().includes(word)) {
@@ -86,7 +95,7 @@ class CompetitionForm extends React.Component {
 
     for (let word of splitDescription) {
       if (mySeoMatcher().includes(word)) {
-        descriptionScore += 10;
+        descriptionScore += 5;
       }
     }
 
